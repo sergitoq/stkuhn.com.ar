@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SerQuin Technologie Kühn</title>
+<meta name="description" content="Ingeniería en Sistemas y Telecomunicaciones. Proyectos, instalación y configuración de sistemas electrónicos, computación y tecnología.">
+<style>
+  :root {
+    --bg: #f5f6f8;
+    --surface: #ffffff;
+    --text: #1d2430;
+    --muted: #5a6475;
+    --accent: #1f4e79;
+    --accent-soft: #e6eef6;
+    --border: #d9dee6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+  }
+  header {
+    background: var(--accent);
+    color: #fff;
+    padding: 40px 16px 32px;
+    text-align: center;
+  }
+  header h1 { margin: 0 0 6px; font-size: 1.9rem; font-weight: 600; letter-spacing: .3px; }
+  header h2 { margin: 0 0 10px; font-size: 1.15rem; font-weight: 500; opacity: .95; }
+  header p { margin: 0 auto; max-width: 720px; font-size: .98rem; opacity: .9; }
+  main { max-width: 900px; margin: 0 auto; padding: 24px 16px 40px; }
+  .tabs { display: flex; gap: 8px; border-bottom: 2px solid var(--border); margin-bottom: 24px; flex-wrap: wrap; }
+  .tab {
+    background: none; border: none; cursor: pointer;
+    padding: 12px 18px; font-size: 1rem; font-family: inherit;
+    color: var(--muted); border-bottom: 3px solid transparent; margin-bottom: -2px;
+  }
+  .tab[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
+  .tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .panel[hidden] { display: none; }
+  section.block {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+    padding: 18px 22px; margin-bottom: 16px;
+  }
+  section.block h3 { margin: 0 0 10px; color: var(--accent); font-size: 1.1rem; }
+  section.block ul { margin: 0; padding-left: 20px; }
+  section.block li { margin-bottom: 6px; }
+  footer {
+    background: var(--surface); border-top: 1px solid var(--border);
+    padding: 28px 16px; text-align: center; color: var(--muted);
+  }
+  footer h3 { margin: 0 0 8px; color: var(--text); font-size: 1.05rem; }
+  footer p { margin: 4px 0; }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 520px) {
+    header h1 { font-size: 1.5rem; }
+    .tab { flex: 1 1 100%; text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>SerQuin Technologie Kühn</h1>
+  <h2>Ingeniería en Sistemas y Telecomunicaciones</h2>
+  <p>Especialistas en Proyectos, Instalación y Configuración de Sistemas Electrónicos, Computación y Tecnología</p>
+</header>
+
+<main>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" id="tab-corp" aria-controls="panel-corp" aria-selected="true">Corporativo / Profesional</button>
+    <button class="tab" role="tab" id="tab-dom" aria-controls="panel-dom" aria-selected="false" tabindex="-1">Domiciliaria y Consorcios</button>
+  </div>
+
+  <div class="panel" role="tabpanel" id="panel-corp" aria-labelledby="tab-corp">
+    <section class="block">
+      <h3>Ingeniería en Telecomunicaciones e Industria</h3>
+      <ul>
+        <li>Diseño, gestión y administración de proyectos de telecomunicaciones.</li>
+        <li>Administración de presupuestos, supervisión de proveedores y gestión eficiente de recursos.</li>
+        <li>Liderazgo de equipos de trabajo altamente capacitados.</li>
+        <li>Servicios gestionados (Managed Services) para garantizar un funcionamiento óptimo.</li>
+      </ul>
+    </section>
+    <section class="block">
+      <h3>Auditoría y Optimización</h3>
+      <ul>
+        <li>Auditorías exhaustivas de telecomunicaciones y data centers, tanto físicas como lógicas.</li>
+        <li>Inventarios detallados, etiquetado y resolución de discrepancias.</li>
+        <li>Especialización en Data Centers, Servidores y Cableado Estructurado, incluyendo distribución de energía AC/DC.</li>
+      </ul>
+    </section>
+    <section class="block">
+      <h3>Comunicaciones Avanzadas</h3>
+      <ul>
+        <li>Transmisión de Datos a través de fibra óptica (CWDM, DWDM, GPON, SDH, PDH, SONET, etc.).</li>
+        <li>Verificación y cálculo preciso de enlaces por fibra óptica.</li>
+        <li>Análisis de perfil topográfico y evaluación de obstrucciones para enlaces RF / Microondas.</li>
+      </ul>
+    </section>
+    <section class="block">
+      <h3>Redes y Seguridad</h3>
+      <ul>
+        <li>Implementación y gestión de LAN, WAN y WLAN.</li>
+        <li>Configuración de Routers, Switches y Arquitectura de Redes.</li>
+        <li>Redes de acceso, metro y última milla.</li>
+        <li>Configuraciones avanzadas de protección de redes y transporte de datos de alta capacidad SDH. Vasta experiencia en topologías mixtas, terrestres, submarinas y satelitales. Protocolos e infraestructuras transoceánicas.</li>
+      </ul>
+    </section>
+  </div>
+
+  <div class="panel" role="tabpanel" id="panel-dom" aria-labelledby="tab-dom" hidden>
+    <section class="block">
+      <h3>Seguridad Electrónica</h3>
+      <ul>
+        <li>Soluciones de seguridad para hogares y consorcios.</li>
+        <li>Sistemas de alarmas y circuito cerrado de televisión (CCTV).</li>
+        <li>Control de acceso y sistemas de detección de incendios.</li>
+        <li>Automatizaciones para mayor comodidad y seguridad.</li>
+      </ul>
+    </section>
+    <section class="block">
+      <h3>Videovigilancia Inteligente</h3>
+      <ul>
+        <li>Videovigilancia IP con detección inteligente por hardware dedicado: distinción entre personas, vehículos y animales, con notificación en tiempo real al celular.</li>
+        <li>Grabación local con retención configurable, sin cuotas mensuales ni dependencia de la nube del fabricante.</li>
+        <li>Acceso remoto seguro a cámaras y sistemas del hogar sin exponer equipos a Internet.</li>
+      </ul>
+    </section>
+    <section class="block">
+      <h3>Automatización Integral</h3>
+      <ul>
+        <li>Iluminación, climatización, riego, aperturas, escenas y rutinas, con control desde el celular y por voz.</li>
+        <li>Integración de dispositivos de distintas marcas en una única plataforma, eliminando la necesidad de una aplicación por producto.</li>
+        <li>Integración de alarmas ya instaladas al sistema de automatización, conservando el equipamiento existente.</li>
+        <li>Operación local garantizada: el sistema sigue funcionando ante caída del servicio de Internet o del proveedor del equipo.</li>
+        <li>Monitoreo y alertas de consumo eléctrico, temperatura, humedad, tanques y bombas.</li>
+      </ul>
+    </section>
+    <section class="block">
+      <h3>Infraestructura de Datos Domiciliaria y PyME</h3>
+      <ul>
+        <li>Servidores propios y almacenamiento en red (NAS) para archivos, fotos y respaldos.</li>
+        <li>Esquemas de backup automático con réplica externa cifrada.</li>
+        <li>Redes WiFi de cobertura total, con segmentación de red y red de invitados aislada.</li>
+        <li>Filtrado de publicidad y contenido a nivel de red, para todos los dispositivos.</li>
+        <li>Acceso remoto a la red del hogar u oficina desde cualquier ubicación.</li>
+      </ul>
+    </section>
+    <section class="block">
+      <h3>Gestión Remota de Propiedades</h3>
+      <ul>
+        <li>Supervisión a distancia de propiedades de alquiler temporario: cámaras, accesos, climatización y consumos.</li>
+        <li>Control de ingreso de huéspedes y personal sin presencia física.</li>
+        <li>Alertas automáticas ante cortes de energía, de servicio o eventos fuera de horario.</li>
+      </ul>
+    </section>
+    <section class="block">
+      <h3>Sistemas de Información y Servicios WEB</h3>
+      <ul>
+        <li>Cursos especializados en tecnología, alfabetización digital y optimización de dispositivos personales.</li>
+        <li>Dominios WEB y delegaciones NIC.</li>
+        <li>Desarrollo de páginas web básicas y enrutado de dominios.</li>
+        <li>Configuración y gestión de correos corporativos sobre servicios gratuitos.</li>
+      </ul>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <h3>Contacto</h3>
+  <p><strong>SerQuin Technologie Kühn</strong></p>
+  <p>Nicolás Repetto 17 (1405) C.A.B.A.</p>
+  <p>Teléfono: <a href="tel:+5491167899975">+54 9 11 6789-9975</a></p>
+</footer>
+
+<script>
+  (function () {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+    function select(tab) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      });
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { select(t); });
+      t.addEventListener('keydown', function (e) {
+        var n = null;
+        if (e.key === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
+        if (e.key === 'ArrowLeft') n = tabs[(i - 1 + tabs.length) % tabs.length];
+        if (n) { e.preventDefault(); select(n); n.focus(); }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
