@@ -5,70 +5,239 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SerQuin Technologie Kühn</title>
 <meta name="description" content="Ingeniería en Sistemas y Telecomunicaciones. Proyectos, instalación y configuración de sistemas electrónicos, computación y tecnología.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f5f6f8;
+    --ink: #0b1622;
+    --ink-2: #12233a;
+    --bg: #f3f5f8;
     --surface: #ffffff;
-    --text: #1d2430;
-    --muted: #5a6475;
-    --accent: #1f4e79;
-    --accent-soft: #e6eef6;
-    --border: #d9dee6;
+    --text: #17212e;
+    --muted: #5b6778;
+    --accent: #0fa3a3;
+    --accent-deep: #0a7c80;
+    --accent-soft: #e3f4f4;
+    --border: #dde3ea;
+    --shadow: 0 1px 2px rgba(11,22,34,.05), 0 6px 20px rgba(11,22,34,.06);
+    --shadow-hover: 0 2px 4px rgba(11,22,34,.06), 0 14px 32px rgba(11,22,34,.10);
+    --sans: "IBM Plex Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono: "IBM Plex Mono", Consolas, "Courier New", monospace;
   }
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     margin: 0;
     background: var(--bg);
     color: var(--text);
-    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.55;
+    font-family: var(--sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
   }
-  header {
-    background: var(--accent);
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    overflow: hidden;
     color: #fff;
-    padding: 40px 16px 32px;
-    text-align: center;
+    background:
+      linear-gradient(90deg, rgba(11,22,34,.96) 0%, rgba(11,22,34,.85) 40%, rgba(11,22,34,.25) 75%, rgba(11,22,34,.1) 100%),
+      linear-gradient(180deg, rgba(11,22,34,0) 60%, rgba(11,22,34,.7) 100%),
+      url("img/hero.jpg") right center / cover no-repeat,
+      var(--ink);
   }
-  header h1 { margin: 0 0 6px; font-size: 1.9rem; font-weight: 600; letter-spacing: .3px; }
-  header h2 { margin: 0 0 10px; font-size: 1.15rem; font-weight: 500; opacity: .95; }
-  header p { margin: 0 auto; max-width: 720px; font-size: .98rem; opacity: .9; }
-  main { max-width: 900px; margin: 0 auto; padding: 24px 16px 40px; }
-  .tabs { display: flex; gap: 8px; border-bottom: 2px solid var(--border); margin-bottom: 24px; flex-wrap: wrap; }
+  .hero::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+    background-size: 36px 36px;
+    -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,.9), rgba(0,0,0,.2));
+            mask-image: linear-gradient(180deg, rgba(0,0,0,.9), rgba(0,0,0,.2));
+    pointer-events: none;
+  }
+  .hero-inner {
+    position: relative;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 28px 20px 72px;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 12px;
+    font-family: var(--mono); font-size: .85rem; letter-spacing: .08em;
+    color: rgba(255,255,255,.75); text-transform: uppercase;
+  }
+  .brand-mark {
+    width: 38px; height: 38px; border-radius: 9px;
+    display: grid; place-items: center;
+    background: linear-gradient(135deg, var(--accent), #1f6fb2);
+    color: #fff; font-weight: 600; font-size: .95rem; letter-spacing: 0;
+    box-shadow: 0 6px 18px rgba(15,163,163,.35);
+  }
+  .hero h1 {
+    margin: 64px 0 10px;
+    font-size: clamp(2rem, 5vw, 3.3rem);
+    line-height: 1.1; font-weight: 700; letter-spacing: -.02em;
+  }
+  .hero h2 {
+    margin: 0 0 16px;
+    font-size: clamp(1.1rem, 2.4vw, 1.45rem);
+    font-weight: 500; color: #7fe0de;
+  }
+  .hero p.lead {
+    margin: 0; max-width: 680px;
+    font-size: 1.05rem; color: rgba(255,255,255,.78);
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 30px; padding: 0; list-style: none; }
+  .chips li {
+    font-family: var(--mono); font-size: .78rem;
+    padding: 6px 12px; border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.18);
+    background: rgba(255,255,255,.05);
+    color: rgba(255,255,255,.85);
+  }
+
+  /* ---------- Tabs ---------- */
+  main { max-width: 1080px; margin: 0 auto; padding: 0 20px 56px; }
+  .tabs {
+    position: relative; z-index: 2;
+    display: inline-flex; gap: 4px; flex-wrap: wrap;
+    margin-top: -26px; padding: 5px;
+    background: var(--surface);
+    border: 1px solid var(--border); border-radius: 12px;
+    box-shadow: var(--shadow);
+  }
   .tab {
     background: none; border: none; cursor: pointer;
-    padding: 12px 18px; font-size: 1rem; font-family: inherit;
-    color: var(--muted); border-bottom: 3px solid transparent; margin-bottom: -2px;
+    padding: 11px 20px; border-radius: 8px;
+    font-family: inherit; font-size: .98rem; font-weight: 500;
+    color: var(--muted);
+    transition: background .2s, color .2s;
   }
-  .tab[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
+  .tab:hover { color: var(--text); background: var(--bg); }
+  .tab[aria-selected="true"] { background: var(--ink-2); color: #fff; }
   .tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .panel { margin-top: 32px; }
   .panel[hidden] { display: none; }
-  section.block {
-    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
-    padding: 18px 22px; margin-bottom: 16px;
+  .panel-head { margin: 0 0 20px; }
+  .panel-head .kicker {
+    font-family: var(--mono); font-size: .78rem; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--accent-deep);
   }
-  section.block h3 { margin: 0 0 10px; color: var(--accent); font-size: 1.1rem; }
-  section.block ul { margin: 0; padding-left: 20px; }
-  section.block li { margin-bottom: 6px; }
-  footer {
-    background: var(--surface); border-top: 1px solid var(--border);
-    padding: 28px 16px; text-align: center; color: var(--muted);
+  .panel-head h3 { margin: 4px 0 0; font-size: 1.5rem; letter-spacing: -.01em; }
+
+  .banner {
+    display: block; width: 100%; height: 220px; object-fit: cover;
+    border-radius: 14px; margin: 0 0 20px;
+    box-shadow: var(--shadow);
   }
-  footer h3 { margin: 0 0 8px; color: var(--text); font-size: 1.05rem; }
-  footer p { margin: 4px 0; }
-  footer a { color: var(--accent); text-decoration: none; }
-  footer a:hover { text-decoration: underline; }
-  @media (max-width: 520px) {
-    header h1 { font-size: 1.5rem; }
-    .tab { flex: 1 1 100%; text-align: left; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 18px;
+  }
+  .card {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border); border-radius: 14px;
+    padding: 24px 24px 20px;
+    box-shadow: var(--shadow);
+    transition: transform .2s, box-shadow .2s, border-color .2s;
+  }
+  .card::before {
+    content: ""; position: absolute; left: 24px; right: 24px; top: -1px; height: 3px;
+    border-radius: 0 0 3px 3px;
+    background: linear-gradient(90deg, var(--accent), #1f6fb2);
+    opacity: 0; transition: opacity .2s;
+  }
+  .card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); border-color: #c9d3de; }
+  .card:hover::before { opacity: 1; }
+  .card-head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+  .icon {
+    flex: 0 0 auto; width: 44px; height: 44px; border-radius: 11px;
+    display: grid; place-items: center;
+    background: var(--accent-soft); color: var(--accent-deep);
+  }
+  .icon svg { width: 24px; height: 24px; }
+  .card h4 { margin: 0; font-size: 1.08rem; line-height: 1.3; }
+  .card ul { margin: 0; padding: 0; list-style: none; }
+  .card li {
+    position: relative; padding-left: 20px; margin-bottom: 8px;
+    font-size: .95rem; color: #2b3747;
+  }
+  .card li::before {
+    content: ""; position: absolute; left: 2px; top: .62em;
+    width: 7px; height: 7px; border-radius: 2px;
+    background: var(--accent); transform: rotate(45deg);
+  }
+  .card li:last-child { margin-bottom: 0; }
+
+  /* ---------- Contact ---------- */
+  .contact {
+    color: #fff;
+    background: linear-gradient(160deg, var(--ink) 0%, var(--ink-2) 100%);
+  }
+  .contact-inner {
+    max-width: 1080px; margin: 0 auto; padding: 44px 20px;
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px;
+  }
+  .contact .kicker {
+    font-family: var(--mono); font-size: .78rem; letter-spacing: .1em;
+    text-transform: uppercase; color: #7fe0de;
+  }
+  .contact h3 { margin: 4px 0 6px; font-size: 1.4rem; }
+  .contact p { margin: 2px 0; color: rgba(255,255,255,.78); }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 13px 22px; border-radius: 10px;
+    background: var(--accent); color: #fff; text-decoration: none;
+    font-weight: 600; font-size: 1rem;
+    box-shadow: 0 8px 22px rgba(15,163,163,.35);
+    transition: background .2s, transform .2s;
+  }
+  .btn:hover { background: #12b5b5; transform: translateY(-1px); }
+  .btn svg { width: 20px; height: 20px; }
+  .copyright {
+    text-align: center; padding: 16px 20px 22px;
+    font-family: var(--mono); font-size: .75rem;
+    color: rgba(255,255,255,.45);
+    background: var(--ink);
+  }
+
+  @media (max-width: 560px) {
+    .hero-inner { padding-bottom: 60px; }
+    .hero h1 { margin-top: 44px; }
+    .tabs { display: flex; }
+    .tab { flex: 1 1 100%; text-align: center; }
+    .grid { grid-template-columns: 1fr; }
+    .card { padding: 20px 18px 18px; }
+    .banner { height: 150px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; scroll-behavior: auto !important; }
   }
 </style>
 </head>
 <body>
 
-<header>
-  <h1>SerQuin Technologie Kühn</h1>
-  <h2>Ingeniería en Sistemas y Telecomunicaciones</h2>
-  <p>Especialistas en Proyectos, Instalación y Configuración de Sistemas Electrónicos, Computación y Tecnología</p>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="brand"><span class="brand-mark">STK</span>stkuhn.com.ar</div>
+    <h1>SerQuin Technologie Kühn</h1>
+    <h2>Ingeniería en Sistemas y Telecomunicaciones</h2>
+    <p class="lead">Especialistas en Proyectos, Instalación y Configuración de Sistemas Electrónicos, Computación y Tecnología</p>
+    <ul class="chips">
+      <li>Fibra óptica</li>
+      <li>Microondas</li>
+      <li>Data Centers</li>
+      <li>Redes</li>
+      <li>Seguridad electrónica</li>
+      <li>Automatización</li>
+    </ul>
+  </div>
 </header>
 
 <main>
@@ -78,105 +247,161 @@
   </div>
 
   <div class="panel" role="tabpanel" id="panel-corp" aria-labelledby="tab-corp">
-    <section class="block">
-      <h3>Ingeniería en Telecomunicaciones e Industria</h3>
-      <ul>
-        <li>Diseño, gestión y administración de proyectos de telecomunicaciones.</li>
-        <li>Administración de presupuestos, supervisión de proveedores y gestión eficiente de recursos.</li>
-        <li>Liderazgo de equipos de trabajo altamente capacitados.</li>
-        <li>Servicios gestionados (Managed Services) para garantizar un funcionamiento óptimo.</li>
-      </ul>
-    </section>
-    <section class="block">
-      <h3>Auditoría y Optimización</h3>
-      <ul>
-        <li>Auditorías exhaustivas de telecomunicaciones y data centers, tanto físicas como lógicas.</li>
-        <li>Inventarios detallados, etiquetado y resolución de discrepancias.</li>
-        <li>Especialización en Data Centers, Servidores y Cableado Estructurado, incluyendo distribución de energía AC/DC.</li>
-      </ul>
-    </section>
-    <section class="block">
-      <h3>Comunicaciones Avanzadas</h3>
-      <ul>
-        <li>Transmisión de Datos a través de fibra óptica (CWDM, DWDM, GPON, SDH, PDH, SONET, etc.).</li>
-        <li>Verificación y cálculo preciso de enlaces por fibra óptica.</li>
-        <li>Análisis de perfil topográfico y evaluación de obstrucciones para enlaces RF / Microondas.</li>
-      </ul>
-    </section>
-    <section class="block">
-      <h3>Redes y Seguridad</h3>
-      <ul>
-        <li>Implementación y gestión de LAN, WAN y WLAN.</li>
-        <li>Configuración de Routers, Switches y Arquitectura de Redes.</li>
-        <li>Redes de acceso, metro y última milla.</li>
-        <li>Configuraciones avanzadas de protección de redes y transporte de datos de alta capacidad SDH. Vasta experiencia en topologías mixtas, terrestres, submarinas y satelitales. Protocolos e infraestructuras transoceánicas.</li>
-      </ul>
-    </section>
+    <div class="panel-head">
+      <div class="kicker">Empresas e industria</div>
+      <h3>Corporativo / Profesional</h3>
+    </div>
+    <img class="banner" src="img/corporativo.jpg" alt="Patchera de fibra óptica con conectores y cordones de conexión">
+    <div class="grid">
+      <section class="card">
+        <div class="card-head">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 10v11"/><path d="M8 21h8"/><circle cx="12" cy="8" r="2"/><path d="M7.8 3.8a6 6 0 0 0 0 8.4"/><path d="M16.2 3.8a6 6 0 0 1 0 8.4"/></svg></span>
+          <h4>Ingeniería en Telecomunicaciones e Industria</h4>
+        </div>
+        <ul>
+          <li>Diseño, gestión y administración de proyectos de telecomunicaciones.</li>
+          <li>Administración de presupuestos, supervisión de proveedores y gestión eficiente de recursos.</li>
+          <li>Liderazgo de equipos de trabajo altamente capacitados.</li>
+          <li>Servicios gestionados (Managed Services) para garantizar un funcionamiento óptimo.</li>
+        </ul>
+      </section>
+      <section class="card">
+        <div class="card-head">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M9 12l2 2 4-4"/></svg></span>
+          <h4>Auditoría y Optimización</h4>
+        </div>
+        <ul>
+          <li>Auditorías exhaustivas de telecomunicaciones y data centers, tanto físicas como lógicas.</li>
+          <li>Inventarios detallados, etiquetado y resolución de discrepancias.</li>
+          <li>Especialización en Data Centers, Servidores y Cableado Estructurado, incluyendo distribución de energía AC/DC.</li>
+        </ul>
+      </section>
+      <section class="card">
+        <div class="card-head">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c3-6 6-6 9 0s6 6 9 0"/><path d="M2 17c3-6 6-6 9 0s6 6 9 0" opacity=".5"/><path d="M2 7c3-6 6-6 9 0s6 6 9 0" opacity=".5"/></svg></span>
+          <h4>Comunicaciones Avanzadas</h4>
+        </div>
+        <ul>
+          <li>Transmisión de Datos a través de fibra óptica (CWDM, DWDM, GPON, SDH, PDH, SONET, etc.).</li>
+          <li>Verificación y cálculo preciso de enlaces por fibra óptica.</li>
+          <li>Análisis de perfil topográfico y evaluación de obstrucciones para enlaces RF / Microondas.</li>
+        </ul>
+      </section>
+      <section class="card">
+        <div class="card-head">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="5" rx="1"/><rect x="2" y="17" width="6" height="5" rx="1"/><rect x="16" y="17" width="6" height="5" rx="1"/><path d="M12 7v5"/><path d="M5 17v-2.5h14V17"/></svg></span>
+          <h4>Redes y Seguridad</h4>
+        </div>
+        <ul>
+          <li>Implementación y gestión de LAN, WAN y WLAN.</li>
+          <li>Configuración de Routers, Switches y Arquitectura de Redes.</li>
+          <li>Redes de acceso, metro y última milla.</li>
+          <li>Configuraciones avanzadas de protección de redes y transporte de datos de alta capacidad SDH. Vasta experiencia en topologías mixtas, terrestres, submarinas y satelitales. Protocolos e infraestructuras transoceánicas.</li>
+        </ul>
+      </section>
+    </div>
   </div>
 
   <div class="panel" role="tabpanel" id="panel-dom" aria-labelledby="tab-dom" hidden>
-    <section class="block">
-      <h3>Seguridad Electrónica</h3>
-      <ul>
-        <li>Soluciones de seguridad para hogares y consorcios.</li>
-        <li>Sistemas de alarmas y circuito cerrado de televisión (CCTV).</li>
-        <li>Control de acceso y sistemas de detección de incendios.</li>
-        <li>Automatizaciones para mayor comodidad y seguridad.</li>
-      </ul>
-    </section>
-    <section class="block">
-      <h3>Videovigilancia Inteligente</h3>
-      <ul>
-        <li>Videovigilancia IP con detección inteligente por hardware dedicado: distinción entre personas, vehículos y animales, con notificación en tiempo real al celular.</li>
-        <li>Grabación local con retención configurable, sin cuotas mensuales ni dependencia de la nube del fabricante.</li>
-        <li>Acceso remoto seguro a cámaras y sistemas del hogar sin exponer equipos a Internet.</li>
-      </ul>
-    </section>
-    <section class="block">
-      <h3>Automatización Integral</h3>
-      <ul>
-        <li>Iluminación, climatización, riego, aperturas, escenas y rutinas, con control desde el celular y por voz.</li>
-        <li>Integración de dispositivos de distintas marcas en una única plataforma, eliminando la necesidad de una aplicación por producto.</li>
-        <li>Integración de alarmas ya instaladas al sistema de automatización, conservando el equipamiento existente.</li>
-        <li>Operación local garantizada: el sistema sigue funcionando ante caída del servicio de Internet o del proveedor del equipo.</li>
-        <li>Monitoreo y alertas de consumo eléctrico, temperatura, humedad, tanques y bombas.</li>
-      </ul>
-    </section>
-    <section class="block">
-      <h3>Infraestructura de Datos Domiciliaria y PyME</h3>
-      <ul>
-        <li>Servidores propios y almacenamiento en red (NAS) para archivos, fotos y respaldos.</li>
-        <li>Esquemas de backup automático con réplica externa cifrada.</li>
-        <li>Redes WiFi de cobertura total, con segmentación de red y red de invitados aislada.</li>
-        <li>Filtrado de publicidad y contenido a nivel de red, para todos los dispositivos.</li>
-        <li>Acceso remoto a la red del hogar u oficina desde cualquier ubicación.</li>
-      </ul>
-    </section>
-    <section class="block">
-      <h3>Gestión Remota de Propiedades</h3>
-      <ul>
-        <li>Supervisión a distancia de propiedades de alquiler temporario: cámaras, accesos, climatización y consumos.</li>
-        <li>Control de ingreso de huéspedes y personal sin presencia física.</li>
-        <li>Alertas automáticas ante cortes de energía, de servicio o eventos fuera de horario.</li>
-      </ul>
-    </section>
-    <section class="block">
-      <h3>Sistemas de Información y Servicios WEB</h3>
-      <ul>
-        <li>Cursos especializados en tecnología, alfabetización digital y optimización de dispositivos personales.</li>
-        <li>Dominios WEB y delegaciones NIC.</li>
-        <li>Desarrollo de páginas web básicas y enrutado de dominios.</li>
-        <li>Configuración y gestión de correos corporativos sobre servicios gratuitos.</li>
-      </ul>
-    </section>
+    <div class="panel-head">
+      <div class="kicker">Hogares, consorcios y PyMEs</div>
+      <h3>Domiciliaria y Consorcios</h3>
+    </div>
+    <div class="grid">
+      <section class="card">
+        <div class="card-head">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5z"/><path d="M9 12l2 2 4-4"/></svg></span>
+          <h4>Seguridad Electrónica</h4>
+        </div>
+        <ul>
+          <li>Soluciones de seguridad para hogares y consorcios.</li>
+          <li>Sistemas de alarmas y circuito cerrado de televisión (CCTV).</li>
+          <li>Control de acceso y sistemas de detección de incendios.</li>
+          <li>Automatizaciones para mayor comodidad y seguridad.</li>
+        </ul>
+      </section>
+      <section class="card">
+        <div class="card-head">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l12-3 2 7-12 3z"/><path d="M17 8l4-1"/><path d="M8 13.5l1 4.5H5"/><circle cx="10" cy="8.5" r="1.3"/></svg></span>
+          <h4>Videovigilancia Inteligente</h4>
+        </div>
+        <ul>
+          <li>Videovigilancia IP con detección inteligente por hardware dedicado: distinción entre personas, vehículos y animales, con notificación en tiempo real al celular.</li>
+          <li>Grabación local con retención configurable, sin cuotas mensuales ni dependencia de la nube del fabricante.</li>
+          <li>Acceso remoto seguro a cámaras y sistemas del hogar sin exponer equipos a Internet.</li>
+        </ul>
+      </section>
+      <section class="card">
+        <div class="card-head">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/></svg></span>
+          <h4>Automatización Integral</h4>
+        </div>
+        <ul>
+          <li>Iluminación, climatización, riego, aperturas, escenas y rutinas, con control desde el celular y por voz.</li>
+          <li>Integración de dispositivos de distintas marcas en una única plataforma, eliminando la necesidad de una aplicación por producto.</li>
+          <li>Integración de alarmas ya instaladas al sistema de automatización, conservando el equipamiento existente.</li>
+          <li>Operación local garantizada: el sistema sigue funcionando ante caída del servicio de Internet o del proveedor del equipo.</li>
+          <li>Monitoreo y alertas de consumo eléctrico, temperatura, humedad, tanques y bombas.</li>
+        </ul>
+      </section>
+      <section class="card">
+        <div class="card-head">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="7" rx="1.5"/><rect x="3" y="14" width="18" height="7" rx="1.5"/><path d="M7 6.5h.01M7 17.5h.01"/><path d="M11 6.5h6M11 17.5h6"/></svg></span>
+          <h4>Infraestructura de Datos Domiciliaria y PyME</h4>
+        </div>
+        <ul>
+          <li>Servidores propios y almacenamiento en red (NAS) para archivos, fotos y respaldos.</li>
+          <li>Esquemas de backup automático con réplica externa cifrada.</li>
+          <li>Redes WiFi de cobertura total, con segmentación de red y red de invitados aislada.</li>
+          <li>Filtrado de publicidad y contenido a nivel de red, para todos los dispositivos.</li>
+          <li>Acceso remoto a la red del hogar u oficina desde cualquier ubicación.</li>
+          <li>Servidores propios de video y audio para uso familiar o de la empresa, accesibles desde cualquier dispositivo.</li>
+          <li>Protección de equipos con UPS y apagado ordenado automático ante cortes prolongados.</li>
+        </ul>
+      </section>
+      <section class="card">
+        <div class="card-head">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9"/><path d="M17 6l3 3"/><path d="M15 8l2 2"/></svg></span>
+          <h4>Gestión Remota de Propiedades</h4>
+        </div>
+        <ul>
+          <li>Supervisión a distancia de propiedades de alquiler temporario: cámaras, accesos, climatización y consumos.</li>
+          <li>Control de ingreso de huéspedes y personal sin presencia física.</li>
+          <li>Alertas automáticas ante cortes de energía, de servicio o eventos fuera de horario.</li>
+        </ul>
+      </section>
+      <section class="card">
+        <div class="card-head">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg></span>
+          <h4>Sistemas de Información y Servicios WEB</h4>
+        </div>
+        <ul>
+          <li>Cursos especializados en tecnología, alfabetización digital y optimización de dispositivos personales.</li>
+          <li>Dominios WEB y delegaciones NIC.</li>
+          <li>Desarrollo de páginas web básicas y enrutado de dominios.</li>
+          <li>Publicación de sitios web sin costo de hosting, con certificado HTTPS y DNS gestionado.</li>
+          <li>Configuración y gestión de correos corporativos sobre servicios gratuitos.</li>
+          <li>Asistentes automáticos por WhatsApp para consultas, disponibilidad y cotizaciones.</li>
+        </ul>
+      </section>
+    </div>
   </div>
 </main>
 
-<footer>
-  <h3>Contacto</h3>
-  <p><strong>SerQuin Technologie Kühn</strong></p>
-  <p>Nicolás Repetto 17 (1405) C.A.B.A.</p>
-  <p>Teléfono: <a href="tel:+5491167899975">+54 9 11 6789-9975</a></p>
+<footer class="contact" id="contacto">
+  <div class="contact-inner">
+    <div>
+      <div class="kicker">Contacto</div>
+      <h3>SerQuin Technologie Kühn</h3>
+      <p>Nicolás Repetto 17 (1405) C.A.B.A.</p>
+      <p>Teléfono: +54 9 11 6789-9975</p>
+    </div>
+    <a class="btn" href="tel:+5491167899975">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+      Llamar
+    </a>
+  </div>
+  <div class="copyright">SerQuin Technologie Kühn - stkuhn.com.ar</div>
 </footer>
 
 <script>
