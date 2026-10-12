@@ -209,6 +209,67 @@
     background: var(--ink);
   }
 
+
+  /* ---------- Trayectoria (CV) ---------- */
+  .cv-block {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+    padding: 24px; box-shadow: var(--shadow); margin-bottom: 18px;
+  }
+  .cv-summary p { margin: 0 0 12px; color: #2b3747; }
+  .cv-summary p:last-child { margin-bottom: 0; }
+  .cv-title {
+    margin: 0 0 18px; font-family: var(--mono); font-size: .8rem; font-weight: 500;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--accent-deep);
+  }
+  .stats {
+    list-style: none; padding: 0; margin: 0 0 18px;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px;
+  }
+  .stats li {
+    background: var(--ink-2); color: #fff; border-radius: 12px; padding: 16px 18px;
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .stats strong { font-size: 1.5rem; line-height: 1.2; color: #7fe0de; font-weight: 600; }
+  .stats span { font-size: .85rem; color: rgba(255,255,255,.75); }
+  .timeline { list-style: none; margin: 0; padding: 0; }
+  .timeline > li {
+    position: relative; padding: 0 0 22px 26px; border-left: 2px solid var(--border); margin-left: 6px;
+  }
+  .timeline > li:last-child { padding-bottom: 0; border-left-color: transparent; }
+  .timeline > li::before {
+    content: ""; position: absolute; left: -7px; top: 5px; width: 12px; height: 12px;
+    border-radius: 50%; background: var(--surface); border: 2px solid var(--accent);
+  }
+  .tl-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; }
+  .tl-role { font-weight: 600; font-size: 1.02rem; line-height: 1.35; }
+  .tl-date { font-family: var(--mono); font-size: .8rem; color: var(--muted); white-space: nowrap; }
+  .tl-org { color: var(--accent-deep); font-weight: 500; margin: 2px 0 8px; }
+  .timeline ul, .training { margin: 0; padding: 0; list-style: none; }
+  .timeline ul li {
+    position: relative; padding-left: 18px; margin-bottom: 6px; font-size: .95rem; color: #2b3747;
+  }
+  .timeline ul li::before {
+    content: ""; position: absolute; left: 2px; top: .62em; width: 6px; height: 6px;
+    border-radius: 2px; background: var(--accent); transform: rotate(45deg);
+  }
+  .training li { padding: 12px 0; border-top: 1px solid var(--border); }
+  .training li:first-child { border-top: none; padding-top: 0; }
+  .tr-name { font-size: .95rem; color: var(--text); }
+  .tr-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; font-size: .85rem; color: var(--muted); margin-top: 2px; }
+  .tr-h { font-family: var(--mono); white-space: nowrap; }
+  .cv-note { margin: 14px 0 0; font-size: .85rem; color: var(--muted); font-style: italic; }
+  .cv-two { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; }
+  .cv-two .cv-block { margin-bottom: 0; }
+  .kv { margin: 0; }
+  .kv dt { font-weight: 600; font-size: .95rem; }
+  .kv dd { margin: 0 0 12px; font-size: .95rem; color: #2b3747; }
+  .kv dd:last-child { margin-bottom: 0; }
+  @media (max-width: 560px) {
+    .cv-block { padding: 20px 18px; }
+    .cv-two { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+  }
+
   @media (max-width: 560px) {
     .hero-inner { padding-bottom: 60px; }
     .hero h1 { margin-top: 44px; }
@@ -247,8 +308,8 @@
 <main>
   <div class="tabs" role="tablist">
     <button class="tab" role="tab" id="tab-corp" aria-controls="panel-corp" aria-selected="true">Corporativo / Profesional</button>
-    <button class="tab" role="tab" id="tab-tray" aria-controls="panel-tray" aria-selected="false" tabindex="-1">Trayectoria y Capacitación</button>
     <button class="tab" role="tab" id="tab-dom" aria-controls="panel-dom" aria-selected="false" tabindex="-1">Domiciliaria y Consorcios</button>
+    <button class="tab" role="tab" id="tab-tray" aria-controls="panel-tray" aria-selected="false" tabindex="-1">Trayectoria y Capacitación</button>
   </div>
 
   <div class="panel" role="tabpanel" id="panel-corp" aria-labelledby="tab-corp">
@@ -268,7 +329,7 @@
           <li>Fibra óptica terrestre y submarina: DWDM, CWDM, SDH, SONET y PDH.</li>
           <li>Estaciones de amarre de cable submarino: terminales de línea submarina y telealimentación de repetidores.</li>
           <li>Topologías mixtas satelital-terrestre de alcance internacional.</li>
-          <li>Esquemas de protección de redes de transporte, anillos y protección de trayecto.</li>
+          <li>Esquemas de protección de redes de transporte, anillos, protección de trayecto y protocolo submarino.</li>
         </ul>
       </section>
       <section class="card">
@@ -318,52 +379,6 @@
           <li>Routing y switching super-core Cisco y Juniper.</li>
           <li>Redes de acceso, metro y última milla.</li>
           <li>Implementación y gestión de LAN, WAN y WLAN, arquitectura de redes y análisis de tráfico.</li>
-        </ul>
-      </section>
-    </div>
-  </div>
-
-  <div class="panel" role="tabpanel" id="panel-tray" aria-labelledby="tab-tray" hidden>
-    <div class="panel-head">
-      <div class="kicker">Respaldo técnico</div>
-      <h3>Trayectoria y Capacitación</h3>
-    </div>
-    <div class="grid">
-      <section class="card">
-        <div class="card-head">
-          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/><path d="M3 13h18"/></svg></span>
-          <h4>Experiencia de la Dirección Técnica</h4>
-        </div>
-        <ul>
-          <li>Más de 48 años en ingeniería de telecomunicaciones, transmisión de datos e infraestructura.</li>
-          <li>Trayectoria en Alcatel Submarine Networks, Global Crossing, Level 3, Emerging Markets Communications, Google y Tevycom / Transdigi.</li>
-          <li>Operación en estructuras multinacionales, con coordinación entre Europa, África, América y el Caribe.</li>
-        </ul>
-      </section>
-      <section class="card">
-        <div class="card-head">
-          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/></svg></span>
-          <h4>Proyectos Destacados</h4>
-        </div>
-        <ul>
-          <li>Doce años de ingeniería y operación de una estación de amarre de cable submarino: núcleo DWDM de 1,5 Tb/s en un anillo sudamericano de 18.000 km, más 2.200 km de red terrestre en Argentina, en operación conjunta con POPs en siete países y el GNOC de Londres.</li>
-          <li>Administración de la red internacional de transporte terrestre (SDH, PDH, DWDM) de EMC, en topología mixta satelital-terrestre con teleports en Alemania, Reino Unido y Hawái, con escalamiento Tier III de toda la red.</li>
-          <li>Ingeniería de despliegue del programa DIGI II de digitalización de líneas de abonado en Buenos Aires, Córdoba, Rosario y otras ciudades del país.</li>
-          <li>Activación en plazo de más de 800 circuitos de clientes.</li>
-          <li>Auditorías de data centers de Google en todo el mundo.</li>
-        </ul>
-      </section>
-      <section class="card">
-        <div class="card-head">
-          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/><path d="M22 9v6"/></svg></span>
-          <h4>Capacitación Internacional de Fabricantes</h4>
-        </div>
-        <ul>
-          <li>Formación directa de los fabricantes: Alcatel Submarine Networks (Alcatel University), Lucent Technologies, Italtel, SIAE Micro y Marconi.</li>
-          <li>Sedes de capacitación en Francia, Italia, Estados Unidos, Brasil, Chile y Argentina.</li>
-          <li>Más de 1.100 horas documentadas de capacitación técnica formal: cables y terminales submarinos, telealimentación, DWDM, SDH, microondas digitales, PCM y PDH.</li>
-          <li>Instrumental Anritsu (OSA, OTDR, analizadores SDH) y plataformas Infinera DTN y Ciena 6500.</li>
-          <li>Autoría de los procedimientos de calidad en gestión de proyectos que obtuvieron la certificación ISO 9000.</li>
         </ul>
       </section>
     </div>
@@ -450,6 +465,148 @@
           <li>Configuración y gestión de correos corporativos sobre servicios gratuitos.</li>
           <li>Asistentes automáticos por WhatsApp para consultas, disponibilidad y cotizaciones.</li>
         </ul>
+      </section>
+    </div>
+  </div>
+  <div class="panel" role="tabpanel" id="panel-tray" aria-labelledby="tab-tray" hidden>
+    <div class="panel-head">
+      <div class="kicker">Dirección técnica</div>
+      <h3>Trayectoria y Capacitación</h3>
+    </div>
+    <section class="cv-block cv-summary">
+      <p>Ingeniero en electrónica, telecomunicaciones y sistemas de información con más de 48 años de trayectoria, especializado en transporte de datos de nivel carrier en toda la jerarquía de operadores: ISP, mayoristas y Tier 1. Doce años (2000-2012) de ingeniería y operación de una estación de amarre de cable submarino para Alcatel Submarine Networks, Global Crossing y Level 3: núcleo DWDM de 1,5 Tb/s en un anillo submarino sudamericano de 18.000 km, más 2.200 km de red terrestre en Argentina, en operación conjunta con POPs en siete países y el GNOC de Londres. Administrador de la red internacional de transporte terrestre (SDH, PDH, DWDM) de Emerging Markets Communications, en topología mixta satelital-terrestre con teleports en Alemania, Reino Unido y Hawái, y autoridad de escalamiento Tier III de toda la red. Antes, gerente de ingeniería de despliegue de transporte SDH/PDH por microondas y fibra óptica en el programa nacional DIGI II de digitalización de líneas de abonado.</p>
+      <p>Capacitado directamente por los fabricantes de los sistemas que operó - Alcatel Submarine Networks, Lucent Technologies, Italtel, SIAE Micro y Marconi - en Francia, Italia, Estados Unidos, Brasil y Chile: más de 1.100 horas documentadas de capacitación técnica formal, con una inversión estimada de US$100K por ingeniero por parte de ASN / Global Crossing.</p>
+      <p>Actúa en el nivel de dirección técnica, arquitectura y gobierno de ingeniería, con base en décadas de ejecución práctica: puede exigirle a un diseño porque construyó, puso en servicio y reparó los sistemas que lo sostienen.</p>
+    </section>
+    <ul class="stats">
+      <li><strong>48+</strong><span>años de trayectoria</span></li>
+      <li><strong>12</strong><span>años en cable submarino</span></li>
+      <li><strong>1,5 Tb/s</strong><span>núcleo DWDM</span></li>
+      <li><strong>18.000 km</strong><span>anillo submarino</span></li>
+      <li><strong>800+</strong><span>circuitos activados</span></li>
+      <li><strong>1.100+ h</strong><span>capacitación de fabricantes</span></li>
+    </ul>
+    <section class="cv-block">
+      <h4 class="cv-title">Experiencia</h4>
+      <ol class="timeline">
+        <li>
+          <div class="tl-head"><span class="tl-role">Principal Consultant</span><span class="tl-date">Jun 2018 - Actualidad</span></div>
+          <div class="tl-org">SerQuin Technologie Kühn (STKühn)</div>
+          <ul>
+            <li>Gestión de programas, planificación y arquitectura de redes, y consultoría técnica para operadores de telecomunicaciones y clientes corporativos.</li>
+            <li>Diseño de transporte óptico (CWDM, DWDM, GPON, PDH, SDH, SONET), esquemas de protección y anillos, y cálculo de enlaces ópticos y de microondas con análisis de perfil topográfico.</li>
+            <li>Auditorías de data centers y redes, físicas y lógicas: inventario, etiquetado y resolución de discrepancias.</li>
+          </ul>
+        </li>
+        <li>
+          <div class="tl-head"><span class="tl-role">Sr. Support Engineer SDH/DWDM - Metro Operations &amp; Data Centre Auditor</span><span class="tl-date">Feb 2015 - Dic 2018</span></div>
+          <div class="tl-org">Google</div>
+          <ul>
+            <li>Soporte a las operaciones de red metro de Google en Argentina y en todo el mundo, sobre plataformas CWDM, DWDM y SDH.</li>
+            <li>Auditorías de data centers en todo el mundo, conciliando discrepancias de activos con Network Surveillance.</li>
+            <li>Relevamientos de sitio para proyectos OSP e ISP y para despliegues de espacio, energía y equipos.</li>
+            <li>Gestión de contratistas locales según MOPs y normas de calidad, y coordinación con Local Exchange Carriers.</li>
+          </ul>
+        </li>
+        <li>
+          <div class="tl-head"><span class="tl-role">Sr. Transport Engineer - IT &amp; Terrestrial Engineering</span><span class="tl-date">Feb 2013 - Feb 2015</span></div>
+          <div class="tl-org">Emerging Markets Communications (EMC)</div>
+          <ul>
+            <li>Administración de la red internacional de transporte terrestre (SDH, PDH, DWDM) en topología mixta satelital-terrestre, con teleports en Alemania, Reino Unido y Hawái.</li>
+            <li>Conectividad en entornos remotos y hostiles de África, para campamentos de Naciones Unidas y embajadas de Estados Unidos.</li>
+            <li>Punto de escalamiento Tier III para toda la red de la compañía.</li>
+            <li>Diseños de arquitectura (datos, física y lógica) con opciones de costo, dirección de implementaciones y soporte de preventa.</li>
+          </ul>
+        </li>
+        <li>
+          <div class="tl-head"><span class="tl-role">Sr. Transport Engineer / Sr. Cable Station Engineer</span><span class="tl-date">Oct 2002 - Ago 2012</span></div>
+          <div class="tl-org">Level 3 Communications (ex Global Crossing)</div>
+          <ul>
+            <li>Estación de amarre de cable submarino de fibra óptica: núcleo DWDM de 1,5 Tb/s en un anillo sudamericano de 18.000 km más 2.200 km de red terrestre, en operación conjunta con POPs en Argentina, Brasil, Islas Vírgenes de EE.UU., Venezuela, Panamá, Perú y Chile, y el GNOC de Londres.</li>
+            <li>Ingeniería en proyectos, ampliaciones e instalaciones; pruebas de aceptación y puesta en servicio.</li>
+            <li>Activación en plazo de más de 800 circuitos de clientes, con gestión de repuestos y bases de ocupación de recursos de red.</li>
+            <li>Terminales de línea submarina y telealimentación de repetidores; gestión remota de repetidores terrestres y submarinos; localización de fallas con OTDR y COTDR.</li>
+            <li>Administración de un edificio técnico de 3.600 m²: plantas de 48 V (12.000 Ah 1+1), rectificadores y UPS SAFT, 8 grupos electrógenos SDMO de 650 kVA, HVAC, VESDA/FM200, control de acceso y CCTV Cerberus.</li>
+            <li>Plataformas: Alcatel OALW64 y 1620LM, Infinera DTN, Lucent OLS400/800G y Bandwidth Manager, Ciena 6500, routers super-core Cisco y Juniper.</li>
+          </ul>
+        </li>
+        <li>
+          <div class="tl-head"><span class="tl-role">Service Engineer</span><span class="tl-date">Jun 2000 - Sep 2002</span></div>
+          <div class="tl-org">Alcatel Submarine Networks (ASN Francia)</div>
+          <ul>
+            <li>La misma función de ingeniería de estación de amarre, como contratista de ASN para Global Crossing, antes de pasar a Global Crossing en forma directa.</li>
+            <li>Capacitado por ASN en Alcatel University (Ormes, Francia), Hollywood FL (EE.UU.), São Paulo (Brasil), Valparaíso (Chile) y Argentina, y por Lucent Technologies en Altamonte Springs FL (EE.UU.).</li>
+          </ul>
+        </li>
+        <li>
+          <div class="tl-head"><span class="tl-role">Deployment Engineering Manager</span><span class="tl-date">Nov 1992 - Ene 2000</span></div>
+          <div class="tl-org">Tevycom &amp; Transdigi (Tevycom - Italtel U.T.E.)</div>
+          <ul>
+            <li>Dirección de proyectos, relevamientos e ingeniería de instalación; proyectos ejecutivos, contratos y órdenes de compra.</li>
+            <li>Composición técnica de licitaciones, soporte de ventas técnicas, preventa y cotizaciones.</li>
+            <li>Autoría de los procedimientos de calidad en gestión de proyectos que obtuvieron la certificación ISO 9000.</li>
+            <li>Cálculo de radioenlaces de microondas, perfil topográfico y presupuestos de potencia en fibra óptica: ADM, MUX, digital loop carrier, PDH y SDH.</li>
+            <li>Ingeniería del contrato DIGI II de digitalización de líneas de abonado en Buenos Aires, Córdoba, Rosario y otras ciudades (Alcatel / Techint / Italtel / Transdigi).</li>
+          </ul>
+        </li>
+        <li>
+          <div class="tl-head"><span class="tl-role">Responsable de Sistemas Electrónicos</span><span class="tl-date">Jul 1984 - Nov 1992</span></div>
+          <div class="tl-org">Club Atlético River Plate</div>
+          <ul>
+            <li>Sistemas electrónicos del club: sonido del estadio, publicidad electrónica, computación y redes, y automatización de grupos electrógenos.</li>
+            <li>Administración de la red telefónica interna y centrales PBX (300 internos).</li>
+          </ul>
+        </li>
+        <li>
+          <div class="tl-head"><span class="tl-role">Responsable de Servicio y Producción</span><span class="tl-date">Ene 1980 - Ene 1984</span></div>
+          <div class="tl-org">American Time System (Sistemas Boxer Seguridad)</div>
+          <ul>
+            <li>Paneles de alarma, CCTV, detección y extinción de incendios, y radioenlaces VHF/UHF/microondas; diseño y programación de interfaces de seguridad.</li>
+          </ul>
+        </li>
+        <li>
+          <div class="tl-head"><span class="tl-role">Responsable de Mantenimiento</span><span class="tl-date">Ene 1978 - Ene 1980</span></div>
+          <div class="tl-org">L.B.A. Emisora del Oeste (sistema de radiodifusión por circuito cerrado)</div>
+          <ul>
+            <li>Líneas de transmisión, transmisores y equipos de estudio.</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+    <section class="cv-block">
+      <h4 class="cv-title">Capacitación internacional</h4>
+      <ul class="training">
+        <li><div class="tr-name">Cables submarinos en anillo, DWDM, telealimentación y terminales de línea submarina; gestión UNIX / HP OpenView</div><div class="tr-meta"><span>Alcatel University, Orleans, Francia</span><span class="tr-h">135 h · 2000</span></div></li>
+        <li><div class="tr-name">Lucent WaveStar OLS400/800G, sistema terrestre de 800 Gb/s sobre un par de fibras</div><div class="tr-meta"><span>Lucent Technologies Training Center, Altamonte Springs FL, EE.UU.</span><span class="tr-h">45 h · 2001</span></div></li>
+        <li><div class="tr-name">Lucent Bandwidth Manager, ADM/Matrix SDH DWDM de 10 Gb/s y gestión SNMS</div><div class="tr-meta"><span>Lucent Technologies, Altamonte Springs FL, EE.UU.</span><span class="tr-h">72 h · 2001</span></div></li>
+        <li><div class="tr-name">Estación de amarre de cable submarino, capacitación práctica B1</div><div class="tr-meta"><span>Alcatel University, Las Toninas, Argentina</span><span class="tr-h">96 h · 2001</span></div></li>
+        <li><div class="tr-name">Empalme de cable óptico terrestre, capacitación práctica B1</div><div class="tr-meta"><span>Alcatel University, Valparaíso, Chile</span><span class="tr-h">88 h · 2001</span></div></li>
+        <li><div class="tr-name">Radioenlaces digitales de microondas de 1,5 a 38 GHz: instalación, arquitectura, reparación y cálculo; multiplexores de acceso PDH/SDH</div><div class="tr-meta"><span>SIAE Micro S.p.A., Milán, Italia</span><span class="tr-h">90 h · 1995</span></div></li>
+        <li><div class="tr-name">Trama y tecnología SDH, ADM, gestión de red y digital loop carriers</div><div class="tr-meta"><span>Marconi Communications</span><span class="tr-h">40 h · 1997</span></div></li>
+        <li><div class="tr-name">PCM, PDH y transmisión de datos por fibra óptica</div><div class="tr-meta"><span>Italtel SIT S.p.A., Castelletto, Italia</span><span class="tr-h">135 h · 1993</span></div></li>
+        <li><div class="tr-name">Instrumental Anritsu: OSA, analizador de redes, OTDR, analizador SDH</div><div class="tr-meta"><span>Anritsu</span><span class="tr-h">2001</span></div></li>
+        <li><div class="tr-name">Infinera DTN · Ciena Multiservice Edge 6500 · Cisco internetworking, routers y switches IOS, extensión WAN (preparación CCNA)</div><div class="tr-meta"><span>Infinera · Ciena · Cisco</span><span class="tr-h">2009 - 2011</span></div></li>
+      </ul>
+      <p class="cv-note">Registro completo de capacitación disponible a pedido.</p>
+    </section>
+    <div class="cv-two">
+      <section class="cv-block">
+        <h4 class="cv-title">Formación académica</h4>
+        <dl class="kv">
+          <dt>Universidad</dt><dd>Ingeniería en Electrónica / Sistemas de Información - Universidad Tecnológica Nacional (UTN)</dd>
+          <dt>Posgrado</dt><dd>Telecomunicaciones, transmisión de datos, tecnología de fibra óptica y redes de datos SDH/DWDM - Alcatel University (Francia) y Lucent University (EE.UU.)</dd>
+          <dt>Secundario</dt><dd>Técnico electrónico (Telecomunicaciones) - EDET Nº 2, Merlo, Provincia de Buenos Aires</dd>
+        </dl>
+      </section>
+      <section class="cv-block">
+        <h4 class="cv-title">Idiomas</h4>
+        <dl class="kv">
+          <dt>Español</dt><dd>Nativo</dd>
+          <dt>Inglés</dt><dd>Fluido, escrito y oral; idioma de trabajo durante 20 años de operaciones internacionales</dd>
+          <dt>Portugués</dt><dd>Conversación fluida, lectura avanzada y traducción</dd>
+          <dt>Italiano</dt><dd>Lectura, traducción y conversación básica</dd>
+          <dt>Francés</dt><dd>Lectura y comprensión básicas</dd>
+        </dl>
       </section>
     </div>
   </div>
